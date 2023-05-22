@@ -1,12 +1,14 @@
 import { Schema, SchemaTypes, Types, model } from "mongoose"
 
-const authorSchema = Schema(
+const materiauSchema = Schema(
   {
     _id: { type: SchemaTypes.ObjectId, default: () => new Types.ObjectId() },
     name: { type: String, required: true },
+    tags: {type: Array, required: true},
+    entreprise: {type: SchemaTypes.ObjectId,required:true }
   }
   // { versionKey: false } // Permet de supprimer le "__v" si besoin
 )
 
-const collectionName = "authors"
-export default model("Author", authorSchema, collectionName)
+const collectionName = "materiau"
+export default model("Materiaux", materiauSchema, collectionName)
