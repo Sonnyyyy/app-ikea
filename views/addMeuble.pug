@@ -10,6 +10,7 @@ block content
             form(action="",method="post")
                 fieldset 
                     legend Filtrage matériaux
+                    br
                     label Rchercher des matériaux
                     br
                     <input type="text" id="tagsM" name="tagsM"/>
@@ -17,12 +18,13 @@ block content
 
             form(action="", method="post")
                 fieldset 
-                    small Tips : Penser à cliquer sur les divers matériaux à utiliser 
+                    small Tips : Penser à selectionner les divers matériaux utiliser pour ce meuble ==>
                     br
                     legend Creation de meuble
+                    br
                     <input type="text" id="nameMeuble" name="nameMeuble"/> 
-                    button(type="submit",class="add") Ajouter un meuble
+                    button(type="submit",class="addC") Créer meuble
         .show_datas
-        each meubleAfficher in meuble
-            div
-            h3 #{meubleAfficher.name}
+            each materiauAfficher in materiaux
+                div.card
+                    h3 #{materiauAfficher.name}
