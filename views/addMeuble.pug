@@ -1,1 +1,20 @@
 extends layout
+block content
+    main 
+    .parametre 
+      h2 Categories
+      .categories_items 
+        ul  
+          each entrep in entreprise
+            li #{entrep.name}
+      form(action="",method="post")
+        <input type="text" id="tags" name="tags"/>
+        <button type="submit">Recherher</button> 
+
+      form(action="", method="post") 
+        
+        button(type="submit",class="add") Ajouter un meuble
+    .show_datas
+      each meubleAfficher in meuble
+        div
+          h3 #{meubleAfficher.name}
