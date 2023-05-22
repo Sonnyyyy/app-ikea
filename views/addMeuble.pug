@@ -1,20 +1,28 @@
 extends layout
 block content
     main 
-    .parametre 
-      h2 Categories
-      .categories_items 
-        ul  
-          each entrep in entreprise
-            li #{entrep.name}
-      form(action="",method="post")
-        <input type="text" id="tags" name="tags"/>
-        <button type="submit">Recherher</button> 
+        .parametre 
+            h2 Entreprises
+            .categories_items 
+            ul  
+                each entrep in entreprise
+                    li #{entrep.name}
+            form(action="",method="post")
+                fieldset 
+                    legend Filtrage matériaux
+                    label Rchercher des matériaux
+                    br
+                    <input type="text" id="tagsM" name="tagsM"/>
+                    <button type="submit">Recherher</button> 
 
-      form(action="", method="post") 
-        
-        button(type="submit",class="add") Ajouter un meuble
-    .show_datas
-      each meubleAfficher in meuble
-        div
-          h3 #{meubleAfficher.name}
+            form(action="", method="post")
+                fieldset 
+                    small Tips : Penser à cliquer sur les divers matériaux à utiliser 
+                    br
+                    legend Creation de meuble
+                    <input type="text" id="nameMeuble" name="nameMeuble"/> 
+                    button(type="submit",class="add") Ajouter un meuble
+        .show_datas
+        each meubleAfficher in meuble
+            div
+            h3 #{meubleAfficher.name}

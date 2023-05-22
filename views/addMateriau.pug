@@ -1,9 +1,13 @@
 extends layout
 block content
     main 
-      form(action="",method="post")
-        span Nom 
-        <input type="text" id="name" name="name"/> #[br]
-        span Entreprise 
-        <input type="text" id="entreprise" name="entreprise"/> #[br]
-        button(type="submit",class="add") Ajouter le materiau
+      div.centered 
+        h1 Ajouter un nouveau matériau
+        form(action="",method="post")
+          label Nom 
+          <input type="text" id="name" name="name"/> 
+          br
+          label Entreprise 
+          <input type="text" id="entreprise" name="entreprise"/>
+          br
+          button(type="submit",class="add") Ajouter le materiau

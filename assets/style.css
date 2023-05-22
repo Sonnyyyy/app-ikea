@@ -1,7 +1,16 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    color :#14A2AB
+}
+
 main{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: start;
+    padding-top: 50px;
 }
 
 .topBar{
@@ -11,17 +20,36 @@ main{
 }
 
 .parametre{
+    padding: 10px;
     background-color: #D9D9D9;
 }
 
 .add{
     color: white;
     padding: 8px 15px;
+    background-color: #278D49;
 }
 
 .show_datas{
+    overflow-y: auto;
     display: flex;
+    padding: 50px 25px;
     flex-wrap: wrap;
+    background-color: #D9D9D9;
     justify-content: space-between;
 }
 
+input{
+    font-style: 18px;
+    padding-top: 6px;
+    padding-bottom:6px;
+}
+
+.centered{
+    width: 100%;
+    text-align: center;
+} 
+
+fieldset{
+    margin-bottom:25px;
+}

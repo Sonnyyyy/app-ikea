@@ -7,8 +7,11 @@ block content
         ul  
           each categorie in categories
             li #{categorie.name}
-      form(action="")
-        <input type="text" id="tags" name="tags"/>
+      form(action="",method="post")
+      fieldset 
+        legend Filtrage meuble par categories
+        br
+        <input type="text" placeholder="" id="tags" name="tags"/>
         <button type="submit">Recherher</button> 
       button.add Ajouter un meuble
     .show_datas

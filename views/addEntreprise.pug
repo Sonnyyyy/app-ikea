@@ -1,6 +1,8 @@
 extends layout
 block content
     main 
-      form(action="",method="post")
-        <input type="text" id="name" name="name"/> #[br]
-        button(type="submit",class="add") Ajouter l'entreprise
+      div.centered 
+        h1 Ajouter une nouvelle entreprise
+        form(action="",method="post")
+          <input type="text" id="name" name="name"/> #[br]
+          button(type="submit",class="add") Ajouter l'entreprise
