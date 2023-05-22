@@ -1,3 +1,4 @@
+import appRouter from "./routers/router.js"
 import dotenv from "dotenv"
 import express from "express"
 import mongoose from "mongoose"
@@ -9,6 +10,8 @@ const app = express()
 
 // Déclarer le moteur de rendu à Express
 app.set("view engine", "pug")
+
+app.use(appRouter)
 
 // Minifier automatiquement les templates PUG en production, mais pas en dev
 app.locals.pretty = NODE_ENV !== "production" ? true : false

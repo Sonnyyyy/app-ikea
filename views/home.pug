@@ -1,7 +1,16 @@
 extends layout
 
-block variables
-  - const PAGE_TITLE = 'Accueil'
-
 block content
-  h1 Hello Express
+  .topBar
+  main 
+    .parametre 
+      h2 Categories
+      .categories_items 
+        ul  
+          li item1 
+          li item2
+      form(action="")
+        <input type="text" id="tags" name="tags"/>
+        <button type="submit">Recherher</button> 
+      button Ajouter un meuble
+    .show_datas
