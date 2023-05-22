@@ -1,13 +1,16 @@
 import Entreprise from "../models/Entreprise.js"
 import { Router } from "express"
+import bodyParser from "body-parser";
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const entrepriseRouter = new Router();
 
 entrepriseRouter.get("/addEntreprise", async (req, res) => {
   res.render("addEntreprise")
 });
 
-entrepriseRouter.post("/addEntreprise", async (req, res) => {
+entrepriseRouter.post("/addEntreprise", urlencodedParser, async (req, res) => {
+
   const { name } = req.body
 
   if (!name) {

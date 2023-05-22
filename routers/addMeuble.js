@@ -3,7 +3,9 @@ import Entreprise from "../models/Entreprise.js"
 import Materiaux from "../models/Materiaux.js"
 import Meuble from "../models/Meuble.js"
 import { Router } from "express"
+import bodyParser from "body-parser";
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const meubleRouter = new Router();
 
 meubleRouter.get("/addMeuble", async (req, res) => {
@@ -14,7 +16,7 @@ meubleRouter.get("/addMeuble", async (req, res) => {
   res.render("addMeuble", { categories, entreprise, materiaux, meuble })
 });
 
-meubleRouter.post("/addMeuble", async (req, res) => {
+meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
   const { name, categorie, materiaux, tags, qte } = req.body
 
   if (!name) {
