@@ -6,11 +6,20 @@ import meubleRouter from "./routers/addMeuble.js"
 import dotenv from "dotenv"
 import express from "express"
 import mongoose from "mongoose"
+import fs from 'fs'
 dotenv.config()
 
 const { APP_HOST, APP_PORT, MONGO_URI, NODE_ENV } = process.env
 
 const app = express()
+
+app.get("/style",(req,res)=>{
+  res.statusCode = 200;
+  const css = fs.readFileSync("assets/style.css");
+  res.write(css);
+  res.end();
+  return;
+}) 
 
 // Déclarer le moteur de rendu à Express
 app.set("view engine", "pug")
