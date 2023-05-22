@@ -1,7 +1,9 @@
 import Entreprise from "../models/Entreprise.js"
 import Materiaux from "../models/Materiaux.js"
 import { Router } from "express"
+import bodyParser from "body-parser";
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const materiauRouter = new Router();
 
 materiauRouter.get("/addMateriau", async (req, res) => {
@@ -9,7 +11,7 @@ materiauRouter.get("/addMateriau", async (req, res) => {
   res.render("addMateriau", { entreprise })
 });
 
-materiauRouter.post("/addMateriau", async (req, res) => {
+materiauRouter.post("/addMateriau", urlencodedParser, async (req, res) => {
   const { name, entreprise, tags } = req.body
 
   if (!name) {
