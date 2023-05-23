@@ -13,9 +13,13 @@ materiauRouter.get("/addMateriau", async (req, res) => {
 });
 
 materiauRouter.post("/addMateriau", urlencodedParser, async (req, res) => {
-  const { name, entreprise, tags } = req.body
+  const { name, description, entreprise, tags } = req.body
 
   if (!name) {
+    return res.status(400).render("addMateriau", { entreprises, error: "Le nom ne peut être vide" });
+  }
+
+  if (!description) {
     return res.status(400).render("addMateriau", { entreprises, error: "Le nom ne peut être vide" });
   }
 
@@ -26,6 +30,7 @@ materiauRouter.post("/addMateriau", urlencodedParser, async (req, res) => {
   try {
     await Materiaux.create({
       name: name,
+      description: description,
       entreprise: entreprise,
       tags: tags,
     })
