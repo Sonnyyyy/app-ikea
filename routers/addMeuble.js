@@ -17,33 +17,49 @@ meubleRouter.get("/addMeuble", async (req, res) => {
 });
 
 meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
-  const { name, categorie, materiaux, tags, qte } = req.body
+  const { name, categorie, materiaux, tags, qte, tagsM } = req.body
 
-  if (!name) {
-    return res.status(400).send("Le nom ne peut être vide")
-  }
+  if (tagsM) {
+      try{
+        const categories = await Categories.find()
+        const entreprise = await Entreprise.find()
+        const meuble = await Meuble.find()
+        const materiaux =  await Materiaux.find({ name : { $regex: tagsM } });
+        res.render("addMeuble", { categories, entreprise, materiaux, meuble })
+      } catch (err) {
+        console.log(err)
+        res.status(500).send("Impossible d'insérer le document")
+      }
+  }else{
 
-  if (!materiaux) {
-    return res.status(400).send("Le meuble doit contenir des materiaux")
-  }
+      if (!name) {
+        return res.status(400).send("Le nom ne peut être vide")
+      }
+    
+      if (!materiaux) {
+        return res.status(400).send("Le meuble doit contenir des materiaux")
+      }
+    
+      if (qte <= 0) {
+        return res.status(400).send("Il doit y avoir au moins 1 meuble")
+      }
+    
+      try {
+        await Meuble.create({
+          name: name,
+          materiaux: materiaux,
+          qte: qte,
+          categorie: categorie,
+          tags: tags
+        })
+        res.status(201).send("Meuble créé")
+      } catch (err) {
+        console.log(err)
+        res.status(500).send("Impossible d'insérer le document")
+      }
+    }
+  })
 
-  if (qte <= 0) {
-    return res.status(400).send("Il doit y avoir au moins 1 meuble")
-  }
-
-  try {
-    await Meuble.create({
-      name: name,
-      materiaux: materiaux,
-      qte: qte,
-      categorie: categorie,
-      tags: tags
-    })
-    res.status(201).send("Meuble créé")
-  } catch (err) {
-    console.log(err)
-    res.status(500).send("Impossible d'insérer le document")
-  }
-})
+  
 
 export default meubleRouter
