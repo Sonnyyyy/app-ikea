@@ -13,3 +13,6 @@ block content
               option(value=entrep._id) #{entrep.name}
           br
           button(type="submit",class="add") Ajouter le materiau
+
+          if error
+            span.alert #{error}
