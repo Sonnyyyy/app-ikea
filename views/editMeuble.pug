@@ -1,0 +1,38 @@
+extends layout
+block content
+        nav 
+            ul
+                li: a(href="/").link Accueil
+        hr
+        .parametreCreat 
+            h1 Edition du meuble
+            .categories_items 
+            form(action="",method="post")
+                fieldset 
+                    ul  
+                    each entrep in entreprises
+                        li #{entrep.name}
+                        each mat, index in allMateriaux 
+                            if mat.entreprise.toString() == entrep._id.toString()
+                                label #{mat.name}
+                                input(type="checkbox", name="materiaux", value=mat)
+                                
+                    legend Édition
+                    br
+                    label Nom du meuble
+                    br
+                    <input type="text" id="name" name="name"/>
+                    br
+                    label Qantité
+                    br
+                    <input type="number" value=1 id="qte" name="qte"/>
+                    br
+                    label Categorie du meuble
+                    br
+                    select(name="categorie").categorie_selected
+                        each cate in categories
+                            option(value=cate._id) #{cate.name}
+                    br
+                    button(type="submit",class="addC") Editer meuble
+        if error
+            span.alert #{error}
