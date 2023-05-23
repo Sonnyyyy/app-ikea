@@ -1,6 +1,6 @@
 extends layout
 block content
-    main 
+    main
         .parametre 
             h2 Entreprises
             .categories_items 
@@ -15,8 +15,7 @@ block content
                     br
                     <input type="text" id="tagsM" name="tagsM"/>
                     <button type="submit">Recherher</button> 
-
-            form(action="", method="post")
+            form(action="",method="post")
                 fieldset 
                     small Tips : Penser à selectionner les divers matériaux utiliser pour ce meuble ==>
                     br
@@ -36,4 +35,5 @@ block content
         .show_datas
             each materiauAfficher in materiaux
                 div.card
+                    <input type="checkBox" id="mats" class="mats_checked"/>
                     h3 #{materiauAfficher.name}
