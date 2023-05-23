@@ -9,6 +9,9 @@ html(lang="fr")
     block scripts
   body
     .topBar
+    if error
+      div.error
+        span.alert #{error}
     block content
   
     footer
