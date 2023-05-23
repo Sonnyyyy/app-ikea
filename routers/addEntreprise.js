@@ -20,7 +20,7 @@ entrepriseRouter.post("/addEntreprise", urlencodedParser, async (req, res) => {
     await Entreprise.create({
       name: name,
     })
-    res.redirect(304, "/");
+    res.redirect(301, "/");
   } catch (err) {
     console.log(err)
     res.status(500).render("addEntreprise", {error: "Impossible d'insérer le document"});

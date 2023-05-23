@@ -29,7 +29,7 @@ materiauRouter.post("/addMateriau", urlencodedParser, async (req, res) => {
       entreprise: entreprise,
       tags: tags,
     })
-    res.redirect(304, "/");
+    res.redirect(301, "/");
   } catch (err) {
     console.log(err)
     res.status(500).render("addMateriau", { entreprises, error: "Impossible d'insérer le document" });

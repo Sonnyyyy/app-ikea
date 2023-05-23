@@ -20,7 +20,7 @@ categorieRouter.post("/addCategorie", urlencodedParser, async (req, res) => {
     await Categorie.create({
       name: name,
     })
-    res.redirect(304, "/");
+    res.redirect(301, "/");
   } catch (err) {
     console.log(err);
     res.status(500).render("addCategorie", {error: "Impossible d'insérer le document"});

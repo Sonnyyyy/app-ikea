@@ -17,7 +17,7 @@ meubleRouter.get("/addMeuble", async (req, res) => {
 });
 
 meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
-  const { name, categorie, materiaux, tags, qte } = req.body
+  const { name, categorie, materiaux, tags, qte = 1 } = req.body
 
   if (!name) {
     return res.status(400).render("addMeuble", { categories, entreprises, allMateriaux, error: "Le nom ne peut être vide" });
@@ -39,7 +39,7 @@ meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
       categorie: categorie,
       tags: tags
     })
-    res.redirect(304, "/");
+    res.redirect(301, "/");
   } catch (err) {
     console.log(err)
     res.status(500).render("addMeuble", { categories, entreprises, allMateriaux, error: "Impossible d'insérer le document" });
