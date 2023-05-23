@@ -24,3 +24,8 @@ block content
       each meubleAfficher in meuble
         div.card
           h3 #{meubleAfficher.name}
+          each categorie in categories
+            if categorie._id.toString() == meubleAfficher.categorie
+              p #{categorie.name}
+          p #{meubleAfficher.tags}
+          p Quantité: #{meubleAfficher.qte}
