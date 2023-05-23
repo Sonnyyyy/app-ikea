@@ -1,14 +1,14 @@
 extends layout
 block content
-  main 
-    .parametre 
-      nav 
+  nav 
         ul
           li: a(href="/addMeuble").link Ajouter un meuble
           li: a(href="/addMateriau").link Ajouter un materiau
           li: a(href="/addCategorie").link Ajouter une categorie
           li: a(href="/addEntreprise").link Ajouter une entreprise
-      hr
+  hr
+  main 
+    .parametre 
       h2 Categories
       form(action="",method="post")
         fieldset 
@@ -26,6 +26,6 @@ block content
           each categorie in categories
             if categorie._id.toString() == meubleAfficher.categorie
               p #{categorie.name}
-              p #{meubleAfficher.tags}
+              a(href="/displayMateriau/"+meubleAfficher._id) #{meubleAfficher.tags}
               p Quantité: #{meubleAfficher.qte}
               a(href="/editMeuble/"+meubleAfficher._id) Editer

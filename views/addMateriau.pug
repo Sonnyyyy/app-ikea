@@ -11,6 +11,9 @@ block content
           label Nom 
           <input type="text" id="name" name="name"/> 
           br
+          label Description 
+          textarea(name="description")
+          br
           label Entreprise 
           select(name="entreprise").entreprise_selected
             each entrep in entreprises
