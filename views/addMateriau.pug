@@ -8,8 +8,8 @@ block content
           <input type="text" id="name" name="name"/> 
           br
           label Entreprise 
-          select.entreprise_selected
+          select(name="entreprise").entreprise_selected
             each entrep in entreprise
-              option #{entrep.name}
+              option(value=entrep._id) #{entrep.name}
           br
           button(type="submit",class="add") Ajouter le materiau

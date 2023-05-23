@@ -28,9 +28,9 @@ block content
                     br
                     label Categorie du meuble
                     br
-                    select.categorie_selected
+                    select(name="categorie").categorie_selected
                         each cate in categories
-                            option #{cate.name}
+                            option(value=cate._id) #{cate.name}
                     br
                     button(type="submit",class="addC") Créer meuble
         .show_datas
