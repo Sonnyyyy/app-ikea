@@ -1,24 +1,21 @@
 extends layout
 block content
-    main
-        .parametre 
+        nav 
+            ul
+                li: a(href="/addMeuble").link Ajouter un meuble
+                li: a(href="/addMateriau").link Ajouter un materiau
+                li: a(href="/addCategorie").link Ajouter une categorie
+                li: a(href="/addEntreprise").link Ajouter une entreprise
+        hr
+        .parametreCreat 
+            h1 Creation d'un meuble
             h2 Entreprises
             .categories_items 
-            ul  
-                each entrep in entreprise
-                    li #{entrep.name}
             form(action="",method="post")
                 fieldset 
-                    legend Filtrage matériaux
-                    br
-                    label Rchercher des matériaux
-                    br
-                    <input type="text" id="tagsM" name="tagsM"/>
-                    <button type="submit">Recherher</button> 
-            form(action="",method="post")
-                fieldset 
-                    small Tips : Penser à selectionner les divers matériaux utiliser pour ce meuble ==>
-                    br
+                    ul  
+                    each entrep in entreprises
+                        li #{entrep.name}
                     legend Creation de meuble
                     br
                     label Nom du meuble
@@ -32,8 +29,5 @@ block content
                             option(value=cate._id) #{cate.name}
                     br
                     button(type="submit",class="addC") Créer meuble
-        .show_datas
-            each materiauAfficher in materiaux
-                div.card
-                    <input type="checkBox" id="mats" class="mats_checked"/>
-                    h3 #{materiauAfficher.name}
+        if error
+            span.alert #{error}
