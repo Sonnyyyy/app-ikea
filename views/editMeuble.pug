@@ -12,26 +12,30 @@ block content
                     ul  
                     each entrep in entreprises
                         li #{entrep.name}
-                        each mat, index in allMateriaux 
+                        each mat in allMateriaux 
+                            - var selected = false
+                            each meubleMat in meuble.materiaux
+                                if meubleMat.toString() == mat._id.toString()
+                                    - selected = true
                             if mat.entreprise.toString() == entrep._id.toString()
                                 label #{mat.name}
-                                input(type="checkbox", name="materiaux", value=mat)
+                                input(type="checkbox", name="materiaux", value=mat, checked=selected)
                                 
                     legend Édition
                     br
                     label Nom du meuble
                     br
-                    <input type="text" id="name" name="name"/>
+                    input(type="text", value=meuble.name, id="name", name="name")
                     br
                     label Quantité
                     br
-                    <input type="number" value=1 id="qte" name="qte"/>
+                    input(type="number", value=meuble.qte, id="qte", name="qte")
                     br
                     label Categorie du meuble
                     br
                     select(name="categorie").categorie_selected
                         each cate in categories
-                            option(value=cate._id) #{cate.name}
+                            option(value=cate._id, selected=(meuble.categorie.toString() == cate._id.toString())) #{cate.name}
                     br
                     button(type="submit",class="addC") Editer meuble
         br
