@@ -13,17 +13,17 @@ categorieRouter.post("/addCategorie", urlencodedParser, async (req, res) => {
   const { name } = req.body
 
   if (!name) {
-    return res.status(400).send("Le nom ne peut être vide")
+    return res.status(400).render("addCategorie", {error: "Le nom ne peut être vide"});
   }
 
   try {
     await Categorie.create({
       name: name,
     })
-    res.status(201).send("Categorie créé")
+    res.redirect(304, "/");
   } catch (err) {
-    console.log(err)
-    res.status(500).send("Impossible d'insérer le document")
+    console.log(err);
+    res.status(500).render("addCategorie", {error: "Impossible d'insérer le document"});
   }
 })
 

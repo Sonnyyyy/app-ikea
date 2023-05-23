@@ -15,11 +15,11 @@ materiauRouter.post("/addMateriau", urlencodedParser, async (req, res) => {
   const { name, entreprise, tags } = req.body
 
   if (!name) {
-    return res.status(400).send("Le nom ne peut être vide")
+    return res.status(400).render("addMateriau", {error: "Le nom ne peut être vide"});
   }
 
   if (!entreprise) {
-    return res.status(400).send("Le materiau doit appartenir à une entreprise")
+    return res.status(400).render("addMateriau", {error: "Le materiau doit appartenir à une entreprise"});
   }
 
   try {
@@ -28,10 +28,10 @@ materiauRouter.post("/addMateriau", urlencodedParser, async (req, res) => {
       entreprise: entreprise,
       tags: tags,
     })
-    res.status(201).send("Materiau créé")
+    res.redirect(304, "/");
   } catch (err) {
     console.log(err)
-    res.status(500).send("Impossible d'insérer le document")
+    res.status(500).render("addMateriau", {error: "Impossible d'insérer le document"});
   }
 })
 

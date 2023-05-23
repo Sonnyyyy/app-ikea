@@ -10,21 +10,20 @@ entrepriseRouter.get("/addEntreprise", async (req, res) => {
 });
 
 entrepriseRouter.post("/addEntreprise", urlencodedParser, async (req, res) => {
-
   const { name } = req.body
 
   if (!name) {
-    return res.status(400).send("Le nom ne peut être vide")
+    return res.status(400).render("addEntreprise", {error: "Le nom ne peut être vide"});
   }
 
   try {
     await Entreprise.create({
       name: name,
     })
-    res.status(201).send("Entreprise créé")
+    res.redirect(304, "/");
   } catch (err) {
     console.log(err)
-    res.status(500).send("Impossible d'insérer le document")
+    res.status(500).render("addEntreprise", {error: "Impossible d'insérer le document"});
   }
 })
 
