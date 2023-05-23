@@ -17,7 +17,7 @@ meubleRouter.get("/addMeuble", async (req, res) => {
 });
 
 meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
-  const { name, categorie, materiaux, qte = 1 } = req.body
+  const { name, categorie, materiaux, qte } = req.body
 
   if (!name) {
     return res.status(400).render("addMeuble", { categories, entreprises, allMateriaux, error: "Le nom ne peut être vide" });
