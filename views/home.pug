@@ -2,6 +2,13 @@ extends layout
 block content
   main 
     .parametre 
+      nav 
+        ul
+          li: a(href="/addMeuble").link Ajouter un meuble
+          li: a(href="/addMateriau").link Ajouter un materiau
+          li: a(href="/addCategorie").link Ajouter une categorie
+          li: a(href="/addEntreprise").link Ajouter une entreprise
+      hr
       h2 Categories
       .categories_items 
         ul  
@@ -13,10 +20,6 @@ block content
         br
         <input type="text" placeholder="" id="tags" name="tags"/>
         <button type="submit">Recherher</button> 
-      a(href="/addMeuble").add Ajouter un meuble
-      a(href="/addMateriau").add Ajouter un materiau
-      a(href="/addCategorie").add Ajouter une categorie
-      a(href="/addEntreprise").add Ajouter une entreprise
     .show_datas
       each meubleAfficher in meuble
         div.card
