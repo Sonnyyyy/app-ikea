@@ -9,7 +9,7 @@ block content
           br
           label Entreprise 
           select(name="entreprise").entreprise_selected
-            each entrep in entreprise
+            each entrep in entreprises
               option(value=entrep._id) #{entrep.name}
           br
           button(type="submit",class="add") Ajouter le materiau
