@@ -22,7 +22,16 @@ block content
                     br
                     legend Creation de meuble
                     br
-                    <input type="text" id="nameMeuble" name="nameMeuble"/> 
+                    label Nom du meuble
+                    br
+                    <input type="text" id="nameMeuble" name="nameMeuble"/>
+                    br
+                    label Categorie du meuble
+                    br
+                    select.categorie_selected
+                        each cate in categories
+                            option #{cate.name}
+                    br
                     button(type="submit",class="addC") Créer meuble
         .show_datas
             each materiauAfficher in materiaux
