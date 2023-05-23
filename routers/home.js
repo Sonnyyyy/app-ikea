@@ -14,11 +14,19 @@ homeRouter.get("/", async (req, res) => {
 });
 
 homeRouter.post('/',urlencodedParser,async(req,res)=>{
-    const {tags}  = req.body;
-    
+    const {tags,categorie}  = req.body;
+  
     try{
       const categories = await Categories.find()
-      const meuble = await Meuble.find({ "tags" : {$regex : tags}});
+      let meuble;
+      if(!tags){
+        meuble = await Meuble.find({categorie : categorie});
+      }else if(!categorie){
+        meuble = await Meuble.find({"tags" : {$regex : tags}});
+      }else{
+        meuble = await Meuble.find({$and :[{"tags" : {$regex : tags}},{categorie : categorie}] });
+      }
+
       res.render("home", { categories, meuble })
     } catch (err) {
       console.log(err)

@@ -10,14 +10,13 @@ block content
           li: a(href="/addEntreprise").link Ajouter une entreprise
       hr
       h2 Categories
-      .categories_items 
-        ul  
-          each categorie in categories
-            li #{categorie.name}
-      form(action="",method="post")
+       form(action="",method="post")
         fieldset 
           legend Filtrage meuble par tags
-          br
+          ul  
+            each categorie in categories
+              li #{categorie.name}
+                input(type="radio", name="categorie" value=categorie._id) 
           <input type="text" id="tags" name="tags"/>
           <button type="submit">Recherher</button> 
     .show_datas
