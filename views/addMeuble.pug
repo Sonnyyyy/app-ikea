@@ -15,7 +15,7 @@ block content
                         each mat, index in allMateriaux 
                             if mat.entreprise.toString() == entrep._id.toString()
                                 label #{mat.name}
-                                input(type="checkbox", name="materiaux", value=mat._id)
+                                input(type="checkbox", name="materiaux", value=mat)
                                 
                     legend Creation de meuble
                     br

@@ -17,7 +17,7 @@ meubleRouter.get("/addMeuble", async (req, res) => {
 });
 
 meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
-  const { name, categorie, materiaux, tags, qte = 1 } = req.body
+  const { name, categorie, materiaux, qte = 1 } = req.body
 
   if (!name) {
     return res.status(400).render("addMeuble", { categories, entreprises, allMateriaux, error: "Le nom ne peut être vide" });
@@ -31,10 +31,16 @@ meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
     return res.status(400).render("addMeuble", { categories, entreprises, allMateriaux, error: "Il doit y avoir au moins 1 meuble" });
   }
 
+  let mats = [], tags = [];
+  materiaux.forEach(mat => {
+    mats.push(JSON.parse(mat)["_id"]);
+    tags.push(JSON.parse(mat)["name"]);
+  })
+
   try {
     await Meuble.create({
       name: name,
-      materiaux: materiaux,
+      materiaux: mats,
       qte: qte,
       categorie: categorie,
       tags: tags
