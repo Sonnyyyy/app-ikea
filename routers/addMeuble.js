@@ -33,7 +33,7 @@ meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
 
   let mats = [], tags = [];
   materiaux.forEach(mat => {
-    mats.push(JSON.parse(mat)["_id"]);
+    mats.push(JSON.parse(mat));
     tags.push(JSON.parse(mat)["name"]);
   })
 
