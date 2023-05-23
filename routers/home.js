@@ -19,7 +19,10 @@ homeRouter.post('/',urlencodedParser,async(req,res)=>{
     try{
       const categories = await Categories.find()
       let meuble;
-      if(!tags){
+
+      if(!tags && !categorie){
+        meuble = await Meuble.find()
+      }else if(!tags){
         meuble = await Meuble.find({categorie : categorie});
       }else if(!categorie){
         meuble = await Meuble.find({"tags" : {$regex : tags}});
