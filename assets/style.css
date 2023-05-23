@@ -6,11 +6,17 @@ h1{
     color :#14A2AB
 }
 
+select {
+    width: 200px;
+    height: 35px;
+    margin-bottom: 20px;
+}
+
 main{
     display: flex;
     justify-content: space-between;
     align-items: start;
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 .topBar{
