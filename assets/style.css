@@ -76,3 +76,17 @@ fieldset{
     justify-content: center;
     align-items: center;
 }
+
+nav ul li{
+    margin-bottom: 30px;
+    list-style-type: none;
+}
+
+.link{
+    padding: 10px;
+    margin: 10px 0px;
+    background-color: #14A2AB;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+}
