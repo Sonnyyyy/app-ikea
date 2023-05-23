@@ -15,7 +15,6 @@ editMeubleRouter.get("/editMeuble/:id", async (req, res) => {
   allMateriaux = await Materiaux.find();
   let meubles = await Meuble.find({ _id: req.params.id });
   meuble = meubles[0]
-  console.log(meuble)
   res.render("editMeuble", { meuble, entreprises, categories, allMateriaux })
 });
 

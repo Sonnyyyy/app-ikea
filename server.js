@@ -5,6 +5,7 @@ import materiauRouter from "./routers/addMateriau.js"
 import meubleRouter from "./routers/addMeuble.js"
 import editMeubleRouter from "./routers/editMeuble.js"
 import styleRouter from "./routers/style.js"
+import displayMatRouter from "./routers/displayMateriau.js"
 import dotenv from "dotenv"
 import express from "express"
 import mongoose from "mongoose"
@@ -21,6 +22,7 @@ app.use(homeRouter)
 app.use(categorieRouter)
 app.use(entrepriseRouter)
 app.use(materiauRouter)
+app.use(displayMatRouter)
 app.use(meubleRouter)
 app.use(editMeubleRouter)
 app.use(styleRouter)
