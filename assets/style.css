@@ -111,6 +111,10 @@ fieldset{
     border: 5px solid #14A2AB;
 }
 
+nav{
+    margin: 25px 0px;
+}
+
 nav ul{
     display: flex;
     padding-left: 0;
