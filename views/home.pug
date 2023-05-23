@@ -26,7 +26,7 @@ block content
           each categorie in categories
             if categorie._id.toString() == meubleAfficher.categorie
               p #{categorie.name}
-              each tag in meubleAfficher.tags
-                a(href="/displayMateriau/"+meubleAfficher._id) #{tag}
+              each mag in meubleAfficher.materiaux
+                a(href="/displayMateriau/"+._id) #{mat}
               p Quantité: #{meubleAfficher.qte}
               a(href="/editMeuble/"+meubleAfficher._id) Editer
