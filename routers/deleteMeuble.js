@@ -5,9 +5,9 @@ import { Router } from "express";
 const deleteRouter = new Router();
 
 deleteRouter.get("/deleteMeuble/:id", async (req, res) => {
-  
+
     try {
-        await Meuble.find({ _id: req.params.id }).remove().exec();
+        await Meuble.findOneAndDelete({ _id: req.params.id });
         res.redirect(301, "/");
     } catch (error) {
         let categories = await Categories.find();

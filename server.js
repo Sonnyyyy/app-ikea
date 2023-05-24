@@ -9,6 +9,7 @@ import displayMatRouter from "./routers/displayMateriau.js"
 import dotenv from "dotenv"
 import express from "express"
 import mongoose from "mongoose"
+import deleteRouter from "./routers/deleteMeuble.js"
 dotenv.config()
 
 const { APP_HOST, APP_PORT, MONGO_URI, NODE_ENV } = process.env
@@ -26,6 +27,7 @@ app.use(materiauRouter)
 app.use(displayMatRouter)
 app.use(meubleRouter)
 app.use(editMeubleRouter)
+app.use(deleteRouter)
 app.use(styleRouter)
 
 // Minifier automatiquement les templates PUG en production, mais pas en dev
