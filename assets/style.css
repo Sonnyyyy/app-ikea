@@ -43,7 +43,6 @@ main{
 
 .parametre{
     margin-right: 20px;
-    width: 30%;
 }
 
 .parametreCreat{
@@ -160,7 +159,7 @@ nav ul li{
     }
 
     .parametre{
-        width: 94%;
+       
         margin-right: 0;
         margin-bottom: 30px;
     }
