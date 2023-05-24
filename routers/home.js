@@ -1,6 +1,6 @@
-import Categories from "../models/Categories.js"
-import Meuble from "../models/Meuble.js"
-import { Router } from "express"
+import Categories from "../models/Categories.js";
+import Meuble from "../models/Meuble.js";
+import { Router } from "express";
 import bodyParser from "body-parser";
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
