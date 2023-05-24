@@ -18,6 +18,7 @@ const app = express()
 // Déclarer le moteur de rendu à Express
 app.set("view engine", "pug")
 
+// Déclarer tout les routers
 app.use(homeRouter)
 app.use(categorieRouter)
 app.use(entrepriseRouter)

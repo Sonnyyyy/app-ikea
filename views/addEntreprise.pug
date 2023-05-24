@@ -1,13 +1,13 @@
 extends layout
 block content
     nav 
-            ul
-                li: a(href="/").link Accueil
+      ul
+        li: a(href="/").link Accueil
     hr
     main 
       div.centered 
         h1 Ajouter une nouvelle entreprise
         form(action="",method="post")
-          <input type="text" id="name" name="name"/> 
+          input(type="text", id="name", name="name")
           br
-          button(type="submit",class="add") Ajouter l'entreprise
+          button(type="submit", class="add") Ajouter l'entreprise

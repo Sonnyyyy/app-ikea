@@ -1,15 +1,15 @@
 extends layout
 block content
     nav 
-            ul
-                li: a(href="/").link Accueil
+      ul
+        li: a(href="/").link Accueil
     hr
     main 
       div.centered 
         h1 Ajouter un nouveau matériau
         form(action="",method="post")
           label Nom 
-          <input type="text" id="name" name="name"/> 
+          input(type="text", id="name", name="name")
           br
           label Description 
           textarea(name="description")

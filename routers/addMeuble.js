@@ -9,6 +9,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const meubleRouter = new Router();
 let categories, entreprises, allMateriaux
 
+// when entering /addMeuble, get the categories, entreprises and materiaux from the db, then render the "addMeuble.pug" template
 meubleRouter.get("/addMeuble", async (req, res) => {
   categories = await Categories.find();
   entreprises = await Entreprise.find();
@@ -16,39 +17,42 @@ meubleRouter.get("/addMeuble", async (req, res) => {
   res.render("addMeuble", { categories, entreprises, allMateriaux })
 });
 
+// when submitting the form
 meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
   const { name, categorie, materiaux, qte } = req.body
 
+  // if the name is missing, display an error message
   if (!name) {
     return res.status(400).render("addMeuble", { categories, entreprises, allMateriaux, error: "Le nom ne peut être vide" });
   }
 
+  // if the materiaux are missing, display an error message
   if (!materiaux) {
     return res.status(400).render("addMeuble", { categories, entreprises, allMateriaux, error: "Le meuble doit contenir des materiaux" });
   }
 
+  // if quantity is less than 1, display an error message
   if (qte <= 0) {
     return res.status(400).render("addMeuble", { categories, entreprises, allMateriaux, error: "Il doit y avoir au moins 1 meuble" });
   }
 
-  let mats = [], tags = [];
+  // make materiaux into an array if it isn't one
+  let mats = []
   if(Array.isArray(materiaux)){
     materiaux.forEach(mat => {
       mats.push(JSON.parse(mat));
-      tags.push(JSON.parse(mat)["name"]);
     })
   }else{
     mats.push(JSON.parse(materiaux));
-    tags.push(JSON.parse(materiaux)["name"]);
   }
 
+  // create the meuble in the db and redirect the user to the home page, display if there's an error
   try {
     await Meuble.create({
       name: name,
       materiaux: mats,
       qte: qte,
-      categorie: categorie,
-      tags: tags
+      categorie: categorie
     })
     res.redirect(301, "/");
   } catch (err) {
