@@ -3,7 +3,7 @@ import Categories from "../models/Categories.js"
 import { Router } from "express";
 
 const deleteRouter = new Router();
-
+  
 deleteRouter.get("/deleteMeuble/:id", async (req, res) => {
 
     try {
