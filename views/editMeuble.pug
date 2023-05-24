@@ -15,7 +15,7 @@ block content
                         each mat in allMateriaux 
                             - var selected = false
                             each meubleMat in meuble.materiaux
-                                if meubleMat.toString() == mat._id.toString()
+                                if meubleMat._id.toString() == mat._id.toString()
                                     - selected = true
                             if mat.entreprise.toString() == entrep._id.toString()
                                 label #{mat.name}
