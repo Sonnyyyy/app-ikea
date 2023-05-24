@@ -28,9 +28,9 @@ homeRouter.post('/',urlencodedParser,async(req,res)=>{
       }else if(!tags){
         meuble = await Meuble.find({categorie : categorie});
       }else if(!categorie){
-        meuble = await Meuble.find({"tags" : {$regex : tags}});
+        meuble = await Meuble.find({"materiaux.name" : {$regex : tags}});
       }else{
-        meuble = await Meuble.find({$and :[{"tags" : {$regex : tags}},{categorie : categorie}] });
+        meuble = await Meuble.find({$and :[{"materiaux.name" : {$regex : tags}},{categorie : categorie}] });
       }
 
       // render the "home.pug" template with the filtered meubles list, display if there's an error

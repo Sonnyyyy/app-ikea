@@ -7,6 +7,7 @@ block content
           li: a(href="/addCategorie").link Ajouter une categorie
           li: a(href="/addEntreprise").link Ajouter une entreprise
   hr
+  h1.titleLeft Liste de tous les meubles
   main 
     .parametre 
       h2 Categories
@@ -18,7 +19,7 @@ block content
               li #{categorie.name}
                 input(type="radio", name="categorie" value=categorie._id) 
           <input type="text" id="tags" name="tags"/>
-          <button type="submit">Recherher</button> 
+          <button type="submit">Recherher</button>
     .show_datas
       each meubleAfficher in meuble
         div.card
@@ -29,5 +30,6 @@ block content
               each mat in meubleAfficher.materiaux
                 a(href="/displayMateriau/"+mat._id) #{mat.name}
               p Quantité: #{meubleAfficher.qte}
-              a(href="/editMeuble/"+meubleAfficher._id) Editer
-              a(href="/deleteMeuble/"+meubleAfficher._id) Supprimer
+              .action
+                a(href="/editMeuble/"+meubleAfficher._id, class="edit") Editer
+                a(href="/deleteMeuble/"+meubleAfficher._id, class="supp") Supprimer
