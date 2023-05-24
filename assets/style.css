@@ -45,6 +45,10 @@ main{
     margin-right: 20px;
 }
 
+.titleLeft{
+    text-align: center;
+}
+
 .parametreCreat{
     width: 95%;
     background-color: white;
