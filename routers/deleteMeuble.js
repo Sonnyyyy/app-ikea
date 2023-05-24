@@ -3,7 +3,8 @@ import Categories from "../models/Categories.js"
 import { Router } from "express";
 
 const deleteRouter = new Router();
-  
+
+// when entering /deleteMeuble, get the meuble with the conrresponding id from the db, then delete it
 deleteRouter.get("/deleteMeuble/:id", async (req, res) => {
 
     try {
