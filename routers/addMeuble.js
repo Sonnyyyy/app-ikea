@@ -32,10 +32,15 @@ meubleRouter.post("/addMeuble", urlencodedParser, async (req, res) => {
   }
 
   let mats = [], tags = [];
-  materiaux.forEach(mat => {
-    mats.push(JSON.parse(mat));
-    tags.push(JSON.parse(mat)["name"]);
-  })
+  if(Array.isArray(materiaux)){
+    materiaux.forEach(mat => {
+      mats.push(JSON.parse(mat));
+      tags.push(JSON.parse(mat)["name"]);
+    })
+  }else{
+    mats.push(JSON.parse(materiaux));
+    tags.push(JSON.parse(materiaux)["name"]);
+  }
 
   try {
     await Meuble.create({
